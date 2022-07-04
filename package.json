@@ -1,0 +1,32 @@
+{
+  "name": "e-commerce-back-end",
+  "version": "1.0.0",
+  "description": "build the back end for an e-commerce site. configure a working Express.js API to use Sequelize to interact with a MySQL database.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node src/server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sophia4422/e-commerce-back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sophia4422/e-commerce-back-end/issues"
+  },
+  "homepage": "https://github.com/sophia4422/e-commerce-back-end#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
