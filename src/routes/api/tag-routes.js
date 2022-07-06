@@ -106,11 +106,9 @@ router.delete("/:id", async (req, res) => {
     await Tag.destroy({ where: { id } });
     return res.status(200).json({ message: "Tag is now deleted" });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        error: "Sorry, unable to delete the tag. Please try again later.",
-      });
+    return res.status(500).json({
+      error: "Sorry, unable to delete the tag. Please try again later.",
+    });
   }
 });
 
