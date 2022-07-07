@@ -12,7 +12,7 @@
 
 ## Description
 
-I have built the back end for an e-commerce site. It has been configured with a working Express.js API and uses Sequelize to interact with a MySQL database.
+The back end for an e-commerce site. This app has been configured with a working Express.js API and uses Sequelize to interact with a MySQL database.
 
 ## Installation
 
