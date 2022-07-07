@@ -6,6 +6,18 @@ const { Category, Product } = require("../../models");
 router.get("/", async (req, res) => {
   // find all categories
   // be sure to include its associated Products
+  try {
+    const allCategories = await Category.findAll({
+      include: [{
+        model: Product, 
+        attributes: ["product_name", "price", "stock"]},
+    ],
+    });
+    //if there are no categories, return res status 404
+    if (!allCategories) {
+      return res.status(404).json({ message: "No categories found"});
+    }
+  }
 });
 
 router.get("/:id", (req, res) => {
