@@ -121,6 +121,23 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   // delete one product by its `id` value
+  try {
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
+
+    if (!product) {
+      return res.status(404).json({
+        message: "Product does not exist",
+      });
+    }
+
+    await Product.destroy({ where: { id } });
+    return res.status(200).json({ message: "Product is now deleted" });
+  } catch (error) {
+    return res.status(500).json({
+      error: "Sorry, unable to delete the product. Please try again later.",
+    });
+  }
 });
 
 module.exports = router;
