@@ -53,18 +53,24 @@ router.get("/:id", async (req, res) => {
 });
 
 // create a new category
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { category_name } = req.body;
 
     if (!category_name) {
-      return res.status(400).json({ message: "Sorry, unable to create a category" });
+      return res
+        .status(400)
+        .json({ message: "Sorry, unable to create a category" });
     }
 
     const newCategory = await Category.create({ category_name });
 
-    return res.status(200).json({ message: "A new tag has been successfully created", category: newCategory 
-  });
+    return res
+      .status(200)
+      .json({
+        message: "A new tag has been successfully created",
+        category: newCategory,
+      });
   } catch (error) {
     return res.status(500).json({
       error: "Sorry, unable to create a new category. Please try again later.",
@@ -73,7 +79,7 @@ router.post("/", (req, res) => {
 });
 
 // update a category by its `id` value
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const category = await Category.findByPk(id);
@@ -86,7 +92,9 @@ router.put("/:id", (req, res) => {
 
     const { category_name } = req.body;
     if (!category_name) {
-      return res.status(400).json({ message: "Sorry, unable to update category" });
+      return res
+        .status(400)
+        .json({ message: "Sorry, unable to update category" });
     }
     await Category.update(
       { category_name },
@@ -101,10 +109,9 @@ router.put("/:id", (req, res) => {
       .status(500)
       .json({ error: "Sorry, we could not update your category." });
   }
-
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   // delete a category by its `id` value
   try {
     const { id } = req.params;
