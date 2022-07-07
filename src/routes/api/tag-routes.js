@@ -12,7 +12,13 @@ router.get("/", async (req, res) => {
         { model: Product, attributes: ["product_name", "price", "stock"] },
       ],
     });
-    return res.json(allTags);
+
+    if (!allTags) {
+      return res.status(404).json({
+        error: "There are no tags right now",
+      });
+    }
+    return res.status(200).json(allTags);
   } catch (error) {
     return res
       .status(500)
