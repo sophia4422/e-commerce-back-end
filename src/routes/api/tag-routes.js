@@ -75,7 +75,7 @@ router.put("/:id", async (req, res) => {
 
     if (!tag) {
       return res.status(404).json({
-        message: "Tag is not found",
+        message: "Tag does not exist",
       });
     }
 
